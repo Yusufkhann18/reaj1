@@ -1,1 +1,230 @@
-<div>HELLO WORLD YOU ARE IN AUTHORS!</div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume - Marcos</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/author/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="resume">
+      <aside class="sidebar">
+        <div class="profile">
+          <img
+            src="/author/images/Profile.png"
+            width="156px"
+            height="142px"
+            alt=""
+          />
+
+          <h3><%=user.name%></h3>
+          <p><%=user.profession%></p>
+
+          <div class="social">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-youtube"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-github"></i>
+            <i class="fab fa-instagram"></i>
+          </div>
+        </div>
+
+        <div class="info">
+          <p><span>Age:</span><%=user.age%></p>
+          <p><span>Residence:</span><%=user.residence%></p>
+          <p><span>Freelance:</span> <b>Available</b></p>
+          <p><span>Address:</span><%=user.adress%></p>
+        </div>
+
+        <section>
+          <h3>Languages</h3>
+
+          <div class="skill">
+            <div>
+              <span>Uzbek</span>
+              <span>100%</span>
+            </div>
+            <div class="line"><i style="width: 100%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div>
+              <span>English</span>
+              <span>90%</span>
+            </div>
+            <div class="line"><i style="width: 80%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div>
+              <span>Korean</span>
+              <span>60%</span>
+            </div>
+            <div class="line"><i style="width: 50%"></i></div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Skills</h3>
+
+          <div class="skill">
+            <div><span>Html</span><span>90%</span></div>
+            <div class="line"><i style="width: 90%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div><span>CSS</span><span>85%</span></div>
+            <div class="line"><i style="width: 85%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div><span>JS</span><span>80%</span></div>
+            <div class="line"><i style="width: 80%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div><span>PHP</span><span>75%</span></div>
+            <div class="line"><i style="width: 75%"></i></div>
+          </div>
+
+          <div class="skill">
+            <div><span>WordPress</span><span>85%</span></div>
+            <div class="line"><i style="width: 85%"></i></div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Extra Skills</h3>
+
+          <ul class="extra">
+            <li>Bootstrap, Materialize</li>
+            <li>Stylus, Sass, Less</li>
+            <li>Gulp, Webpack, Grunt</li>
+            <li>Git Knowledge</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="main">
+        <section class="hero">
+          <span class="shape circle yellow"></span>
+          <span class="shape circle green"></span>
+
+          <span class="shape diamond blue"></span>
+          <span class="shape diamond yellow2"></span>
+
+          <span class="shape triangle red"></span>
+          <div class="hero-text">
+            <h1>Doctor neurologists<br />in OHSU Hospital</h1>
+
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et,
+              voluptate feugiat placerat laboritis. Natusque rutrum semper sed
+              suspendisse nunc lectus.
+            </p>
+
+            <button>HIRE ME <i class="fas fa-arrow-right"></i></button>
+          </div>
+
+          <img
+            src="/author/images/Your Image 1.png"
+            width="325px"
+            height="445px"
+            alt=""
+          />
+        </section>
+
+        <section class="services">
+          <h2>My Services</h2>
+
+          <p class="description">
+            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+            sint. Velit officia consequat duis enim velit mollit. Lorem ipsum.
+          </p>
+
+          <div class="cards">
+            <div class="card">
+              <i class="fas fa-laptop-code"></i>
+              <h3>Web Development</h3>
+              <p>Blog, E-Commerce</p>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-object-group"></i>
+              <h3>UI/UX Design</h3>
+              <p>Mobile App, Website Design</p>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-microphone"></i>
+              <h3>Sound Design</h3>
+              <p>Voice Over, Beat Making</p>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-gamepad"></i>
+              <h3>Game Design</h3>
+              <p>Character Design, Props & Objects</p>
+            </div>
+
+            <div class="card">
+              <i class="fas fa-camera"></i>
+              <h3>Photography</h3>
+              <p>Portrait, Product Photography</p>
+            </div>
+
+            <div class="card advertising">
+              <h3>Advertising</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae
+                nulla diam in ac.
+              </p>
+
+              <a href="#">ORDER NOW →</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="right-nav">
+        <div class="nav-item active">
+          <span class="tooltip">Home</span>
+          <i class="fas fa-home"></i>
+        </div>
+
+        <div class="nav-item">
+          <i class="fas fa-code"></i>
+        </div>
+
+        <div class="nav-item">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+
+        <div class="nav-item">
+          <i class="fas fa-briefcase"></i>
+        </div>
+
+        <div class="nav-item">
+          <i class="fas fa-square"></i>
+        </div>
+
+        <div class="nav-item">
+          <i class="fas fa-comment"></i>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
