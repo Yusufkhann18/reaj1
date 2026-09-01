@@ -13,7 +13,13 @@ async function run() {
   db = client.db("reja1");
   console.log("MongoDB'ga muvaffaqiyatli ulandi!");
 }
-run();
+run()
+  .then(() => {
+    console.log("DB tayyor, endi so'rovlarni qabul qilishi mumkin");
+  })
+  .catch((err) => {
+    console.log("MongoDB ulanishida xato:", err);
+  });
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
@@ -37,16 +43,31 @@ app.post("/create-item", async (req, res) => {
   try {
     console.log(req.body);
     const result = await db.collection("items").insertOne(req.body);
-    res.json({ success: true, insertedId: result.insertedId });
+    res.send("successfully added");
   } catch (err) {
     console.log("ERROR:", err);
-    res.status(500).json({ success: false, error: err.message });
+    res.status(500).json({ message: "Error occurred", error: err.message });
   }
 });
 app.get(`/author`, (req, res) => {
   res.render("author", { user: user });
 });
-app.get(`/`, function (req, res) {
-  res.render("reja1");
+app.get("/", async (req, res) => {
+  try {
+    if (!db) {
+      return res
+        .status(503)
+        .json({
+          message:
+            "Server hali tayyor emas, birozdan keyin qayta urinib ko'ring",
+        });
+    }
+    const items = await db.collection("items").find().toArray();
+    console.log(items);
+    res.render("reja1", { items: items });
+  } catch (err) {
+    console.log("ERROR:", err);
+    res.status(500).json({ message: "Error occurred", error: err.message });
+  }
 });
 module.exports = app;
