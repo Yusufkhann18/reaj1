@@ -41,12 +41,22 @@ app.set("view engine", "ejs");
 // 4 routing code
 app.post("/create-item", async (req, res) => {
   try {
-    console.log(req.body);
-    const result = await db.collection("items").insertOne(req.body);
-    res.send("successfully added");
+    console.log("user entered /create-item");
+
+    const new_reja = req.body.reja;
+
+    const result = await db.collection("items").insertOne({ reja: new_reja });
+
+    res.json({
+      _id: result.insertedId,
+      reja: new_reja,
+    });
   } catch (err) {
     console.log("ERROR:", err);
-    res.status(500).json({ message: "Error occurred", error: err.message });
+    res.status(500).json({
+      message: "Error occurred",
+      error: err.message,
+    });
   }
 });
 app.get(`/author`, (req, res) => {
@@ -55,12 +65,9 @@ app.get(`/author`, (req, res) => {
 app.get("/", async (req, res) => {
   try {
     if (!db) {
-      return res
-        .status(503)
-        .json({
-          message:
-            "Server hali tayyor emas, birozdan keyin qayta urinib ko'ring",
-        });
+      return res.status(503).json({
+        message: "Server hali tayyor emas, birozdan keyin qayta urinib ko'ring",
+      });
     }
     const items = await db.collection("items").find().toArray();
     console.log(items);
