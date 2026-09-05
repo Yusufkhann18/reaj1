@@ -30,3 +30,22 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
       // Handle error
     });
 });
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("delete-me")) {
+    if (confirm("Siz rostdan ham o'chirmoqchimisiz?")) {
+      const id = e.target.getAttribute("data-id");
+
+      console.log("YUBORILAYOTGAN ID:", id);
+
+      axios
+        .post("/delete-item", { id: id })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.remove();
+        })
+        .catch((err) => {
+          console.log("ERROR:", err);
+        });
+    }
+  }
+});

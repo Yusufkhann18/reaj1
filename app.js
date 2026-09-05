@@ -5,6 +5,7 @@ const app = express();
 const fs = require("fs");
 require("dotenv").config();
 const { MongoClient } = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 const client = new MongoClient(process.env.MONGODB_URI);
 let db;
@@ -41,11 +42,11 @@ app.set("view engine", "ejs");
 // 4 routing code
 app.post("/create-item", async (req, res) => {
   try {
-    console.log("user entered /create-item");
-
     const new_reja = req.body.reja;
 
-    const result = await db.collection("items").insertOne({ reja: new_reja });
+    const result = await db.collection("items").insertOne({
+      reja: new_reja,
+    });
 
     res.json({
       _id: result.insertedId,
@@ -54,11 +55,35 @@ app.post("/create-item", async (req, res) => {
   } catch (err) {
     console.log("ERROR:", err);
     res.status(500).json({
-      message: "Error occurred",
       error: err.message,
     });
   }
 });
+
+app.post("/delete-item", async (req, res) => {
+  try {
+    const id = req.body.id;
+
+    console.log("TERMINALGA KELGAN ID:", id);
+
+    const result = await db.collection("items").deleteOne({
+      _id: new ObjectId(id),
+    });
+
+    console.log("O'CHIRILGAN SON:", result.deletedCount);
+
+    res.json({
+      success: true,
+      deletedCount: result.deletedCount,
+    });
+  } catch (err) {
+    console.log("DELETE ERROR:", err);
+    res.status(500).json({
+      error: err.message,
+    });
+  }
+});
+
 app.get(`/author`, (req, res) => {
   res.render("author", { user: user });
 });
